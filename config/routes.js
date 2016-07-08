@@ -48,5 +48,15 @@ module.exports.routes = {
   '/dashboard': {
     controller: 'UserController',
     action: 'Dashboard'
+  },
+  'user/create': {
+    controller: 'UserController',
+    action: 'Create'
+  },
+  'POST /add': {
+    controller: 'UserController',
+    action: 'Add'
   }
+
+
 };

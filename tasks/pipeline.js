@@ -18,7 +18,8 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/normalize.css',
-  'styles/**/*.css'
+  'styles/**/*.css',
+  'styles/custom/*.css'
 ];
 
 
