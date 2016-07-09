@@ -33,7 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    controller: 'UserController',
+    action: 'Dashboard'
   },
 
   /***************************************************************************
@@ -60,6 +61,10 @@ module.exports.routes = {
   'POST /addweight': {
     controller: 'WeightController',
     action: 'Add'
+  },
+  '/getData': {
+    controller: 'UserController',
+    action: 'Data'
   }
 
 

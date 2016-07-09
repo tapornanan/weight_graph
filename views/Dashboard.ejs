@@ -9,13 +9,12 @@
 
   <form action="/addweight" method="post">
 
-
+<input type="hidden" name="name" value="<%= User_Data %>">
   <div class="col-md-5">
     <div class="row">
       <select class="form-control" name="Select_Name" id="Select_Name">
         <% for (var i = 0 ; i < User_Data.length ; i++ ) { %>
           <option value="<%= User_Data[i].id %>" > <%= User_Data[i].Name %>  </option>
-
         <% } %>
       </select>
 
@@ -30,7 +29,11 @@
     </div>
     <hr>
   </div>
-
+  <div class="row">
+    <div class="col-md-8">
+      <canvas id="myChart" width="350" height="200"></canvas>
+    </div>
+  </div>
 
   </form>
 </div>

@@ -44,7 +44,18 @@ module.exports = {
     });
 
     return res.json({ name : _name });
-  }
+  },
 
+  Data: function (req, res) {
+    console.log("> Return Data <");
+    User.find().populateAll().exec(function (err, records) {
+      if (err) {
+        console.log("An error occur");
+      }else{
+        return res.json({ User_Data: records});
+      }
+
+    });
+  }
 
 };
