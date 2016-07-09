@@ -95,11 +95,16 @@ $(document).ready(function(){
 
 });
 
-
+// http://momentjs.com/docs/#/manipulating/subtract/
 
 
 function compare_date(_data) {
   var _date = moment();
+  console.log("now:");
+  console.log(_date);
+  console.log(_date.date());
+  console.log(_date.month());
+  console.log(_date.year());
   var subtract_one_month = moment().subtract(1, 'months');
   var year = moment().year();
   var month = subtract_one_month.month();
@@ -111,26 +116,40 @@ function compare_date(_data) {
 
   // created date for using in comparision
   var created_date = moment().set(_temp);
+  console.log(created_date.date());
+  console.log(created_date.month());
+  console.log(created_date.year());
+  console.log("> (-1) month : <");
   console.log(created_date);
 
   var end = created_date.endOf('month');
-  console.log("> the ending of the month<");
+  console.log("> the ending of the month <");
   console.log(end);
 
-  // --
-  var now   = new Date();
-  var date  = now.getDate();
-  var month = now.getMonth();
-  var back_one_month = (now.getMonth()-1);
+  var _temp_start = created_date.date() +"/"+ created_date.month()  +"/"+ created_date.year();
+  var _temp_now   = moment().date() +"/"+ moment().month()  +"/"+ moment().year();
+  console.log(_temp_start);
+  console.log(_temp_now);
+
+  var a = moment(_temp_start, 'DD/MM/YYYY');
+  var b = moment(_temp_now, 'DD/MM/YYYY');
+  var days = b.diff(a, 'days')
+  console.log(days);
+
+  var temp_past = created_date;
+  for (var k = 0; k < 31 ; k++) {
+    if ( _date >= created_date ){
+      console.log(k);
 
 
-  console.log("today date:");
-  console.log(date);
-  console.log("today month");
-  console.log(month);
-  console.log("- 1 month is:");
-  console.log(back_one_month);
-  console.log("=============");
+
+
+
+
+     temp_past  = temp_past.add(1, 'days');
+     console.log(temp_past);
+    }
+  }
 
 
 
