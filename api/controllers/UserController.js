@@ -13,10 +13,20 @@ module.exports = {
 
   Add: function (req, res) {
     console.log("> Add User <");
-    var name = req.param('name');
-    console.log(name);
+    var _name = req.param('name');
+    console.log(_name);
 
-    return res.json({ name : name });
+    User.create({Name: _name}).exec(function createUser(err, created){
+      if (err) {
+        console.log("err occur when create user");
+        console.log(err);
+      }else{
+        console.log("Success!, create user.");
+
+      }
+    });
+
+    return res.json({ name : _name });
   }
 
 
