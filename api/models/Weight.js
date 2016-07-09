@@ -1,7 +1,7 @@
 module.exports = {
   attributes: {
     Weight: {
-      type: 'double',
+      type: 'float',
       required: true
     },
 

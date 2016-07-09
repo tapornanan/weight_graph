@@ -45,7 +45,7 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  '/dashboard': {
+  '/Dashboard': {
     controller: 'UserController',
     action: 'Dashboard'
   },
@@ -55,6 +55,10 @@ module.exports.routes = {
   },
   'POST /add': {
     controller: 'UserController',
+    action: 'Add'
+  },
+  'POST /addweight': {
+    controller: 'WeightController',
     action: 'Add'
   }
 

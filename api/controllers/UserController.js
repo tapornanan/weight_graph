@@ -1,8 +1,18 @@
+/*
+
+
+  User controller...
+
+
+*/
+
+
+
 module.exports = {
 
   Dashboard: function (req, res) {
     console.log("> Dashboard View <");
-    User.find().exec(function (err, records) {
+    User.find().populateAll().exec(function (err, records) {
       if (err) {
         console.log("An error occur");
       }else{
