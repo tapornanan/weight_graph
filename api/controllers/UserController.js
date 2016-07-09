@@ -46,11 +46,13 @@ module.exports = {
     return res.json({ name : _name });
   },
 
+  // This action return JSON.
   Data: function (req, res) {
     console.log("> Return Data <");
     User.find().populateAll().exec(function (err, records) {
       if (err) {
         console.log("An error occur");
+        return res.json({ User_Data: "Error"});
       }else{
         return res.json({ User_Data: records});
       }

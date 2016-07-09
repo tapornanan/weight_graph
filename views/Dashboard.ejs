@@ -9,7 +9,6 @@
 
   <form action="/addweight" method="post">
 
-<input type="hidden" name="name" value="<%= User_Data %>">
   <div class="col-md-5">
     <div class="row">
       <select class="form-control" name="Select_Name" id="Select_Name">
@@ -20,18 +19,19 @@
 
       <br>
       <div class="input-group">
-        <input type="text" class="form-control" name="Weight" id="Weight" placeholder="input weight in number" aria-describedby="basic-addon2">
-        <span class="input-group-addon" id="basic-addon2">Kg.</span>
+        <input type="number" class="form-control" name="Weight" id="Weight" placeholder="input weight in number" aria-describedby="basic-addon2">
+        <span class="input-group-addon" id="basic-addon2">kg.</span>
       </div>
       <br>
       <button type="submit" class="btn btn-success btn-outline" name="add" id="add">Add</button>
-
+      <a href="/user/create" class="btn btn-default btn-outline">Create User</a>
     </div>
     <hr>
   </div>
   <div class="row">
     <div class="col-md-8">
       <canvas id="myChart" width="350" height="200"></canvas>
+
     </div>
   </div>
 
