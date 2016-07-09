@@ -1,1 +1,29 @@
-<h4>Dashboard</h4>
+
+<% console.log("> Dashboard Page <");%>
+<% console.log(User_Data); %>
+
+
+<div class="container">
+  <h4>Dashboard</h4>
+  <br>
+  <div class="col-md-5">
+    <div class="row">
+      <select class="form-control" name="Select_Name" id="Select_Name">
+        <% for (var i = 0 ; i < User_Data.length ; i++ ) { %>
+          <option value="<%= User_Data[i].id %>" > <%= User_Data[i].Name %>  </option>
+
+        <% } %>
+      </select>
+
+      <br>
+      <div class="input-group">
+        <input type="text" class="form-control" name="Weight" id="Weight" placeholder="input weight in number" aria-describedby="basic-addon2">
+        <span class="input-group-addon" id="basic-addon2">Kg.</span>
+      </div>
+      <br>
+      <button type="button" class="btn btn-success btn-outline" name="add" id="add">Add</button>
+    </div>
+    <hr>
+  </div>
+
+</div>

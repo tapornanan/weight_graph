@@ -1,8 +1,15 @@
 module.exports = {
+
   Dashboard: function (req, res) {
     console.log("> Dashboard View <");
-    return res.view('Dashboard');
+    User.find().exec(function (err, records) {
+      if (err) {
+        console.log("An error occur");
+      }else{
+        return res.view('Dashboard', { User_Data: records});
+      }
 
+    });
   },
 
 
