@@ -106,17 +106,18 @@ function compare_date(_data) {
   var now   = moment();
   var date  = moment().date();
   var year  = moment().year();
-
+  var this_month = moment().month();
   var subtract_one_month = moment().subtract(1, 'months');
   var month = subtract_one_month.month();
 
-  var past  = moment().set({'year': year, 'month': month, 'date': date });
+  var past  = moment().set({'year': year, 'month': this_month, 'date': 1 });
   console.log(past);
   console.log("to");
   console.log(now);
 
   var diff_duration = now.diff(past, 'days');
   console.log(diff_duration);
+
 
 
   var temp_from = past ;
@@ -126,21 +127,19 @@ function compare_date(_data) {
     console.log(_months);
     console.log(_date);
     for (var i = 0; i < _data.length; i++) {
-      // each user.
       // get name here!
       console.log(_data[i].name);
+      var temp_user = _data[i].name;
 
       for (var j = 0; j < _data[i].weight.length; j++) {
         var weight = _data[i].weight[j];
         var date_time = new Date(_data[i].weight[j].createdAt);
-        // console.log("Date create for this weight is : ");
-        // console.log(date_time);
-
         var temp_date  = date_time.getDate();
         var temp_month = date_time.getMonth();
-
+        // find match btw month and date.
         if ( temp_month == _months && temp_date == _date ) {
           console.log("loop date and data date are equal! yeaH..");
+          // push to obj.
         }
       }
     }
