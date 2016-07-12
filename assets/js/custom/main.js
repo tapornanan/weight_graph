@@ -121,45 +121,30 @@ function compare_date(_data) {
   var diff_duration = now.diff(past, 'days');
   console.log(diff_duration);
 
-  var temp_from = past ;
-  for (var k = 0; k < diff_duration + 2 ; k++) {
-    var _months = temp_from.month();
-    var _date   = temp_from.date();
-    console.log(_months);
-    console.log(_date);
-    for (var i = 0; i < _data.length; i++) {
-      // each user.
-      // get name here!
-      var temp_name = _data[i].name;
-      var weight_arr = [];
-      console.log(_data[i].name);
-
-      var past_weight = 0;
-      for (var j = 0; j < _data[i].weight.length; j++) {
-        var weight = _data[i].weight[j];
-        var date_time = new Date(_data[i].weight[j].createdAt);
-
-        if ( j == 0 ){
-          past_weight = _data[i].weight[j].Weight;
+  console.log(_data);
+  for (var i = 0; i < _data.length; i++) {
+    var temp_name = _data[i].name;
+    console.log(temp_name);
+    var temp_weight = 0;
+    var weight_arr = new Array();
+    for (var j = 0; j < _data[i].weight.length; j++) {
+      if ( j == 0 ) {
+        //  first
+        temp_weight = _data[i].weight[0].Weight;
+        console.log("first weight of the month");
+        // console.log(temp_weight);
+      }else{
+        // after first round.
+        temp_weight = temp_weight - _data[i].weight[j].Weight;
+        weight_arr.push(temp_weight);
+        // assign today weight in temp
+        temp_weight = _data[i].weight[j].Weight;
+        if ( j == ( _data[i].weight.length - 1 )){
+          // last data.
+          console.log("last weight");
+          console.log(weight_arr);
         }
-
-        var temp_date  = date_time.getDate();
-        var temp_month = date_time.getMonth();
-        console.log(past_weight);
-
-        if ( temp_month == _months && temp_date == _date ) {
-          console.log("loop date and data date are equal! yeaH..");
-          // campare weight with yesterday.
-          var weight_diff = past_weight - _data[i].weight[j].Weight;
-          console.log(" > weight diff is : < ");
-          console.log(weight_diff);
-          weight_arr.push(weight_diff);
-        }
-
-        // updated weight
-        past_weight = _data[i].weight[j].Weight;
       }
     }
-    temp_from = temp_from.add(1, 'days');
   }
 }
