@@ -127,7 +127,7 @@ function compare_date(_data) {
     var temp_name = _data[i].name;
     console.log(temp_name);
     var temp_weight = 0;
-    var weight_obj = {};
+    var weight_obj = [];
 
     for (var j = 0; j < _data[i].weight.length; j++) {
       var temp_date = _data[i].weight[j].createdAt;
@@ -138,17 +138,24 @@ function compare_date(_data) {
 
       }else{
         // after first round.
-        temp_weight = temp_weight - _data[i].weight[j].Weight;
+        temp_weight = _data[i].weight[j].Weight - temp_weight;
         console.log("weight_diff");
         console.log(temp_weight);
 
+        var weight_to_obj = {
+            "weight": temp_weight,
+            "date"  : temp_date
+        };
+
+        weight_obj.push(weight_to_obj);
         // assign today weight in temp
-        temp_weight = _data[i].weight[j].Weight;
         if ( j == ( _data[i].weight.length - 1 )){
-          // last data.
+
           console.log("last weight");
           console.log(weight_obj);
 
+        }else{
+          temp_weight = _data[i].weight[j].Weight;
         }
       }
     }
