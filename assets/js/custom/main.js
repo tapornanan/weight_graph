@@ -108,11 +108,11 @@ function compare_date(_data) {
   var year  = moment().year();
   var month = moment().month();
 
-  var subtract_one_month = moment().subtract(1, 'months');
-  // var month = subtract_one_month.month();
+  var this_month = moment().month();
 
   // set the begining.
   var past  = moment().set({'year': year, 'month': month, 'date': 1 });
+
   console.log(past);
   console.log("to");
   console.log(now);
@@ -120,6 +120,7 @@ function compare_date(_data) {
   // find the ending of the month
   var diff_duration = now.diff(past, 'days');
   console.log(diff_duration);
+
 
   console.log(_data);
   for (var i = 0; i < _data.length; i++) {
@@ -140,13 +141,14 @@ function compare_date(_data) {
         temp_weight = temp_weight - _data[i].weight[j].Weight;
         console.log("weight_diff");
         console.log(temp_weight);
-        
+
         // assign today weight in temp
         temp_weight = _data[i].weight[j].Weight;
         if ( j == ( _data[i].weight.length - 1 )){
           // last data.
           console.log("last weight");
           console.log(weight_obj);
+
         }
       }
     }
