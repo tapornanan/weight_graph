@@ -33,7 +33,7 @@ module.exports = {
   },
 
   Analyse: function(req, res) {
-    console.log("> Return Data <");
+    console.log("> Analyse Data <");
 
     User.find().populateAll().exec(function (err, records) {
       if (err) {
@@ -62,9 +62,10 @@ module.exports = {
 
         console.log("===========READ DATA=============");
         console.log(_data);
+        var all_user_data = [];
         for (var i = 0; i < _data.length; i++) {
           var user_info = [];
-          var temp_name = _data[i].name;
+          var temp_name = _data[i].Name;
           console.log(temp_name);
 
           var temp_weight = 0;
@@ -100,12 +101,14 @@ module.exports = {
             }
           }
           user_info = {
-            "Weight": weight_obj,
+            "Data": weight_obj,
             "Name"  : temp_name
           };
           console.log(user_info);
+          all_user_data.push(user_info);
         }
-        // return res.json({ User_Data: records});
+
+        return res.json({ Analysed_Data: all_user_data});
       }
 
     });

@@ -62,10 +62,6 @@ module.exports.routes = {
     controller: 'WeightController',
     action: 'Add'
   },
-  '/getData': {
-    controller: 'UserController',
-    action: 'Data'
-  },
   '/analyse':{
     controller: 'WeightController',
     action: 'Analyse'

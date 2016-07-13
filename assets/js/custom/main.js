@@ -2,162 +2,117 @@ $(document).ready(function(){
 
   var ctx = $("#myChart");
 
-  var _data = [];
-  $.getJSON('/getData', function(res){
-    if ( res.User_Data == "Error"){
-      console.log("ERROR!!");
-    }else{
-      var total_user = res.User_Data.length;
-      // var _data = [];
 
-      for (var i = 0; i < res.User_Data.length; i++) {
-        var temp_name = res.User_Data[i].Name;
-        var temp_weight = [];
+  $.getJSON('/analyse', function(res){
 
-        console.log("=========NAME==========");
-        console.log(res.User_Data[i].Name);
-        console.log("=========DATA==========");
-        for (var j = 0; j < res.User_Data[i].Weight.length; j++) {
-          console.log(res.User_Data[i].Weight[j]);
-          temp_weight.push(res.User_Data[i].Weight[j]);
-        }
-        console.log("======================");
+    for (var i = 0; i < res.Analysed_Data.length; i++) {
+      var name = res.Analysed_Data[i].Name;
 
-        _data.push({ name: temp_name, weight: temp_weight });
+      var data = [];
+      for (var j = 0; j < res.Analysed_Data[i].Data.length; j++) {
+        var weight = res.Analysed_Data[i].Data[j].weight;
+        var date   = res.Analysed_Data[i].Data[j].date;
+        var moment_date = moment(date);
+        date = moment_date.date();
+
+        var temp_data = {
+          x: date,
+          y: weight
+        };
+
+        data.push(temp_data);
       }
-
-      console.log("----> check data <-----");
-      console.log(_data);
-
-      compare_date(_data);
+      console.log(name);
+      console.log(data);
     }
-
   });
 
-
-
-
-
   var myChart = new Chart(ctx, {
-    type: 'line',
-
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# weight benchmark',
-            data: [12, 9, 13, 25, 8, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        },
-        {
-            label: '# weight benchmark',
-            data: [15, 20, 3, 5, 8, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+      type: 'line',
+      data: {
+          datasets: [{
+              label: 'Scatter Dataset',
+              data: [{
+                  x: -10,
+                  y: 0
+              }, {
+                  x: 0,
+                  y: 10
+              }, {
+                  x: 10,
+                  y: 5
+              }]
+          }]
       },
       options: {
           scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
+              xAxes: [{
+                  type: 'linear',
+                  position: 'bottom'
               }]
           }
       }
   });
 
+//   var myChart = new Chart(ctx, {
+//     type: 'line',
+//
+//     data: {
+//         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+//         datasets: [{
+//             label: '# weight benchmark',
+//             data: [12, 9, 13, 25, 8, 3]
+//             // backgroundColor: [
+//             //     'rgba(255, 99, 132, 0.2)',
+//             //     'rgba(54, 162, 235, 0.2)',
+//             //     'rgba(255, 206, 86, 0.2)',
+//             //     'rgba(75, 192, 192, 0.2)',
+//             //     'rgba(153, 102, 255, 0.2)',
+//             //     'rgba(255, 159, 64, 0.2)'
+//             // ],
+//             // borderColor: [
+//             //     'rgba(255,99,132,1)',
+//             //     'rgba(54, 162, 235, 1)',
+//             //     'rgba(255, 206, 86, 1)',
+//             //     'rgba(75, 192, 192, 1)',
+//             //     'rgba(153, 102, 255, 1)',
+//             //     'rgba(255, 159, 64, 1)'
+//             // ],
+//             // borderWidth: 1
+//         },
+//         {
+//             label: '# weight benchmark',
+//             data: [15, 20, 3, 5, 8, 3],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
+//                 'rgba(153, 102, 255, 0.2)',
+//                 'rgba(255, 159, 64, 0.2)'
+//             ],
+//             borderColor: [
+//                 'rgba(255,99,132,1)',
+//                 'rgba(54, 162, 235, 1)',
+//                 'rgba(255, 206, 86, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(153, 102, 255, 1)',
+//                 'rgba(255, 159, 64, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//       },
+//       options: {
+//           scales: {
+//               yAxes: [{
+//                   ticks: {
+//                       beginAtZero:true
+//                   }
+//               }]
+//           }
+//       }
+//   });
+//
 });
-
-// http://momentjs.com/docs/#/manipulating/subtract/
-
-
-function compare_date(_data) {
-  var now   = moment();
-  // var date  = moment().date();
-  var year  = moment().year();
-  var month = moment().month();
-
-  var this_month = moment().month();
-
-  // set the begining.
-  var past  = moment().set({'year': year, 'month': month, 'date': 1 });
-
-  console.log(past);
-  console.log("to");
-  console.log(now);
-
-  // find the ending of the month
-  var diff_duration = now.diff(past, 'days');
-  console.log(diff_duration);
-
-
-  console.log(_data);
-  for (var i = 0; i < _data.length; i++) {
-    var temp_name = _data[i].name;
-    console.log(temp_name);
-    var temp_weight = 0;
-    var weight_obj = [];
-
-    for (var j = 0; j < _data[i].weight.length; j++) {
-      var temp_date = _data[i].weight[j].createdAt;
-      if ( j == 0 ) {
-        //  first
-        temp_weight = _data[i].weight[0].Weight;
-        console.log("first weight of the month");
-
-      }else{
-        // after first round.
-        temp_weight = _data[i].weight[j].Weight - temp_weight;
-        console.log("weight_diff");
-        console.log(temp_weight);
-
-        var weight_to_obj = {
-            "weight": temp_weight,
-            "date"  : temp_date
-        };
-
-        weight_obj.push(weight_to_obj);
-        // assign today weight in temp
-        if ( j == ( _data[i].weight.length - 1 )){
-
-          console.log("last weight");
-          console.log(weight_obj);
-
-        }else{
-          temp_weight = _data[i].weight[j].Weight;
-        }
-      }
-    }
-  }
-}
+//
+// // http://momentjs.com/docs/#/manipulating/subtract/

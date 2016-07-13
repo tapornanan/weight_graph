@@ -1,0 +1,77 @@
+[33mcommit 9cc572df7914611d716283e3ed07eaacb66e7ffe[m
+Author: tapornanan <tapornanan23@gmail.com>
+Date:   Mon Jul 11 23:04:51 2016 +0700
+
+    change the way we get data to be month
+
+[33mcommit dc6f99284f5cc1a1122d80555dda82ff447d0d97[m
+Author: tapornanan <tapornanan23@gmail.com>
+Date:   Sun Jul 10 19:18:52 2016 +0700
+
+    fixed function find diff_date
+
+[33mcommit ce0e26c5e05e1f83056dd629578e7ccf0ee1833c[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 22:51:02 2016 +0700
+
+    buging with datetime length
+
+[33mcommit 4a6c1e72d55ab896b8e42a3b73bff066f40e5a1a[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 20:24:00 2016 +0700
+
+    added moment.js
+
+[33mcommit 86ff50399a9e6a3024ebfde378d95f47a897d1d5[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 19:16:14 2016 +0700
+
+    update some main.js code
+
+[33mcommit 692a003eb03605249adfd2ae2c7ce86df29634bc[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 17:11:34 2016 +0700
+
+    added getJSON in main.js
+
+[33mcommit f85026f54a6b2d9d77662d353326a47fb027978f[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 15:24:18 2016 +0700
+
+    fixing model type, add weight to user
+
+[33mcommit f4287ef81e43b2d46834289baf9801cedf1c39b7[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 14:21:05 2016 +0700
+
+    add theme and others things
+
+[33mcommit fbca04f425109c1f2fbb18c89a0e075d86d4c263[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Sat Jul 9 07:46:58 2016 +0700
+
+    added create user
+
+[33mcommit 65aa13940bc98ad579561568a04c055c099bbac1[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Fri Jul 8 23:49:47 2016 +0700
+
+    create add view and contrioller add
+
+[33mcommit 7a691bd29e5bc39b530bd92981f0abaa80fc6d6f[m
+Author: tapornanan <tapornanan23@gmail.com>
+Date:   Fri Jul 8 20:19:44 2016 +0700
+
+    delete unnecessary files
+
+[33mcommit c993b37e439decc2933c111b82d75951bc871327[m
+Author: tapornanan <tapornanan23@gmail.com>
+Date:   Fri Jul 8 19:55:29 2016 +0700
+
+    add serveral css and js files then create dashboard view and user controller
+
+[33mcommit 8f4c00a682a10987052e43d754a1cdd8dae40c7a[m
+Author: Pornanan <tapornanan23@gmail.com>
+Date:   Fri Jul 8 10:31:43 2016 +0700
+
+    begining weight graph
