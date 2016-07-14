@@ -1,13 +1,15 @@
 $(document).ready(function(){
 
-  var ctx = $("#myChart");
+
+
+
 
 
   $.getJSON('/analyse', function(res){
-
+    var datasets = [];
     for (var i = 0; i < res.Analysed_Data.length; i++) {
       var name = res.Analysed_Data[i].Name;
-
+      var _temp = [];
       var data = [];
       for (var j = 0; j < res.Analysed_Data[i].Data.length; j++) {
         var weight = res.Analysed_Data[i].Data[j].weight;
@@ -19,31 +21,35 @@ $(document).ready(function(){
           x: date,
           y: weight
         };
-
         data.push(temp_data);
+
       }
-      console.log(name);
-      console.log(data);
+      temp = {
+        label: name,
+        data : data
+      };
+      datasets.push(temp);
+
     }
+    // make data lika chart format
+    var _dataset_temp = {
+      datasets: datasets
+    };
+
+    datasets = _dataset_temp;
+    console.log("show datasets");
+    console.log(datasets);
+    plot(datasets);
   });
 
+});
+
+
+function plot(datasets){
+  var ctx = $("#myChart");
   var myChart = new Chart(ctx, {
       type: 'line',
-      data: {
-          datasets: [{
-              label: 'Scatter Dataset',
-              data: [{
-                  x: -10,
-                  y: 0
-              }, {
-                  x: 0,
-                  y: 10
-              }, {
-                  x: 10,
-                  y: 5
-              }]
-          }]
-      },
+      data: datasets,
       options: {
           scales: {
               xAxes: [{
@@ -53,66 +59,4 @@ $(document).ready(function(){
           }
       }
   });
-
-//   var myChart = new Chart(ctx, {
-//     type: 'line',
-//
-//     data: {
-//         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-//         datasets: [{
-//             label: '# weight benchmark',
-//             data: [12, 9, 13, 25, 8, 3]
-//             // backgroundColor: [
-//             //     'rgba(255, 99, 132, 0.2)',
-//             //     'rgba(54, 162, 235, 0.2)',
-//             //     'rgba(255, 206, 86, 0.2)',
-//             //     'rgba(75, 192, 192, 0.2)',
-//             //     'rgba(153, 102, 255, 0.2)',
-//             //     'rgba(255, 159, 64, 0.2)'
-//             // ],
-//             // borderColor: [
-//             //     'rgba(255,99,132,1)',
-//             //     'rgba(54, 162, 235, 1)',
-//             //     'rgba(255, 206, 86, 1)',
-//             //     'rgba(75, 192, 192, 1)',
-//             //     'rgba(153, 102, 255, 1)',
-//             //     'rgba(255, 159, 64, 1)'
-//             // ],
-//             // borderWidth: 1
-//         },
-//         {
-//             label: '# weight benchmark',
-//             data: [15, 20, 3, 5, 8, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255,99,132,1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//       },
-//       options: {
-//           scales: {
-//               yAxes: [{
-//                   ticks: {
-//                       beginAtZero:true
-//                   }
-//               }]
-//           }
-//       }
-//   });
-//
-});
-//
-// // http://momentjs.com/docs/#/manipulating/subtract/
+}
