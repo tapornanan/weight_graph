@@ -14,7 +14,8 @@ module.exports = {
 
     var data = {
       User_ID: req.param('Select_Name'),
-      Weight: req.param('Weight')
+      Weight: req.param('Weight'),
+      Date_Added: req.param('Date')
     };
     console.log(data);
 

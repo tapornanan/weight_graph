@@ -1,10 +1,5 @@
 $(document).ready(function(){
 
-
-
-
-
-
   $.getJSON('/analyse', function(res){
     var datasets = [];
     for (var i = 0; i < res.Analysed_Data.length; i++) {

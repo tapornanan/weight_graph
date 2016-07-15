@@ -7,33 +7,35 @@
   <h4>Dashboard</h4>
   <br>
 
-  <form action="/addweight" method="post">
+  <form  class="form-inline" action="/addweight" method="post">
+    <div class="col-md-6">
+      <div class="row">
+        <select class="form-control" name="Select_Name" id="Select_Name">
+          <% for (var i = 0 ; i < User_Data.length ; i++ ) { %>
+            <option value="<%= User_Data[i].id %>" > <%= User_Data[i].Name %>  </option>
+          <% } %>
+        </select>
+      </div>
 
-  <div class="col-md-5">
-    <div class="row">
-      <select class="form-control" name="Select_Name" id="Select_Name">
-        <% for (var i = 0 ; i < User_Data.length ; i++ ) { %>
-          <option value="<%= User_Data[i].id %>" > <%= User_Data[i].Name %>  </option>
-        <% } %>
-      </select>
 
       <br>
-      <div class="input-group">
-        <input type="number" class="form-control" name="Weight" id="Weight" placeholder="input weight in number" aria-describedby="basic-addon2">
-        <span class="input-group-addon" id="basic-addon2">kg.</span>
+      <div class="row">
+        <div class="input-group">
+          <input type="number" step="0.1" class="form-control" name="Weight" id="Weight" placeholder="input weight in number">
+          <span class="input-group-addon" id="basic-addon2">kg.</span>
+        </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-success btn-outline" name="add" id="add">Add</button>
-      <a href="/user/create" class="btn btn-default btn-outline">Create User</a>
+      <div class="row">
+        <button type="submit" class="btn btn-success btn-outline" name="add" id="add">Add</button>
+        <a href="/user/create" class="btn btn-default btn-outline">Create User</a>
+      </div>
     </div>
-    <hr>
-  </div>
+  </form>
+  <hr>
   <div class="row">
     <div class="col-md-8">
       <canvas id="myChart" width="350" height="200"></canvas>
-
     </div>
   </div>
-
-  </form>
 </div>
