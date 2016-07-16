@@ -5,7 +5,8 @@
 
 <div class="container">
   <h4>Dashboard</h4>
-  <br>
+  <hr>
+
 
   <form  class="form-inline" action="/addweight" method="post">
     <div class="col-md-6">
@@ -16,7 +17,11 @@
           <% } %>
         </select>
       </div>
+      <br>
 
+      <div class="row">
+        <input id="datetimepicker" placeholder="pick date" class="form-control" name="Date" type="text" >
+      </div>
 
       <br>
       <div class="row">
@@ -32,7 +37,7 @@
       </div>
     </div>
   </form>
-  <hr>
+
   <div class="row">
     <div class="col-md-8">
       <canvas id="myChart" width="350" height="200"></canvas>

@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+
+
+  // http://xdsoft.net/jqplugins/datetimepicker/
+
+  $('#datetimepicker').datetimepicker({
+    format:'Y/m/d',
+    timepicker:false,
+  });
+
+
   $.getJSON('/analyse', function(res){
     var datasets = [];
     for (var i = 0; i < res.Analysed_Data.length; i++) {
@@ -42,6 +52,11 @@ $(document).ready(function(){
 
 function plot(datasets){
   var ctx = $("#myChart");
+
+
+
+
+
   var myChart = new Chart(ctx, {
       type: 'line',
       data: datasets,
@@ -52,6 +67,6 @@ function plot(datasets){
                   position: 'bottom'
               }]
           }
-      }
+      },
   });
 }

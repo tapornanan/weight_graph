@@ -1,0 +1,17 @@
+{
+  "name": "weight_graph",
+  "description": "a Sails application",
+  "main": "app.js",
+  "authors": [
+    "pornanan"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

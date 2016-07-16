@@ -73,7 +73,7 @@ module.exports = {
           var weight_obj = [];
           console.log(_data[i].Weight.length);
           for (var j = 0; j < _data[i].Weight.length; j++) {
-            var temp_date = _data[i].Weight[j].createdAt;
+            var temp_date = _data[i].Weight[j].Date_Added;
             if ( j == 0 ) {
               //  first
               temp_weight = _data[i].Weight[0].Weight;
