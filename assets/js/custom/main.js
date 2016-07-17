@@ -52,21 +52,33 @@ $(document).ready(function(){
 
 function plot(datasets){
   var ctx = $("#myChart");
-
-
-
-
+  //
+  // var myChart = new Chart(ctx, {
+  //     type: 'line',
+  //     data: datasets,
+  //     options: {
+  //         scales: {
+  //             xAxes: [{
+  //                 type: 'linear',
+  //                 position: 'bottom'
+  //             }]
+  //         }
+  //     },
+  // });
 
   var myChart = new Chart(ctx, {
-      type: 'line',
-      data: datasets,
-      options: {
-          scales: {
-              xAxes: [{
-                  type: 'linear',
-                  position: 'bottom'
-              }]
-          }
-      },
-  });
+    type: 'line',
+    data: datasets,
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom',
+                display: true,
+                stacked: true
+            }]
+        }
+    }
+});
+
 }
